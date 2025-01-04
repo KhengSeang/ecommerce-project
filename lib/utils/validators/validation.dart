@@ -60,5 +60,4 @@ class TValidator {
     return null;
   }
 
-  
 }

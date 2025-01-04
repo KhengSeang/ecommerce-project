@@ -12,6 +12,20 @@ class App extends StatelessWidget{
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
+      // home: const SplashScreen(),
     );
   }
 }
+
+// class SplashScreen extends StatelessWidget {
+//   const SplashScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Center(
+//         child: Image.asset('assets/logos/logo_light.png'), // Use your splash image
+//       ),
+//     );
+//   }
+// }
