@@ -49,11 +49,11 @@ class TDeviceUtils {
     return MediaQuery.of(Get.context!).padding.top;
   }
 
-  static double getBottomBarHeight() {
+  static double getBottomNavigationBarHeight() {
     return kBottomNavigationBarHeight;
   }
 
-  static double getTopBarHeight() {
+  static double getAppBarHeight() {
     return kToolbarHeight;
   }
 
