@@ -61,8 +61,6 @@ flutter:
     - assets/images/on_boarding_images/
     - assets/icons/brands/
     - assets/logos/
-    - assets/logos/logo_light.png
-    - assets/logos/logo_dark.png
 
 #------------------- LOCAL ASSETS --------------------------------#
   fonts:

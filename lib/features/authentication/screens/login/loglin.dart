@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
                     image: AssetImage(dark ? TImages.lightAppLogo: TImages.drakAppLogo),
                   ),
                   Text(TTexts.loginTitle, style: Theme.of(context).textTheme.headlineMedium),
-                  const SizedBox(height: TSize.sm),
+                  const SizedBox(height: TSizes.sm),
                   Text(TTexts.loginSubTitle, style: Theme.of(context).textTheme.bodyMedium),
                 ],
               ),
