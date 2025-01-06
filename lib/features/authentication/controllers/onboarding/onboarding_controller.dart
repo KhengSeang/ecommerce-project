@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:t_store/features/authentication/controllers/login/login.dart';
+import 'package:t_store/features/authentication/screens/login/login.dart';
 
 class OnBoardingController {
   static OnBoardingController get instance => Get.find();
