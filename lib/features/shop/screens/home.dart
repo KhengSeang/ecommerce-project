@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwSections),
 
               ///Search bar
-              const TSearchContainerr(
+              const TSearchContainer(
                 text: 'Search in Store',
               ),
               const SizedBox(height: TSizes.spaceBtwSections),
@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                     //Heading
                     TSectionHeading(
                       title: 'Popular Catergories',
-                      onPressed: (){},
+                      onPressed: () {},
                     ),
                     const SizedBox(height: TSizes.spaceBtwItems),
 
@@ -49,7 +49,8 @@ class HomeScreen extends StatelessWidget {
                     const THomeCategories()
                   ],
                 ),
-              )
+              ),
+              const SizedBox(height: TSizes.spaceBtwSections),
             ],
           )),
 

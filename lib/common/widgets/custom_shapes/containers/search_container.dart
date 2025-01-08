@@ -5,8 +5,8 @@ import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/device/device_utility.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
 
-class TSearchContainerr extends StatelessWidget {
-  const TSearchContainerr({
+class TSearchContainer extends StatelessWidget {
+  const TSearchContainer({
     super.key,
     required this.text,
     this.icon = Iconsax.search_normal,
