@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:t_store/features/authentication/controllers/signup/verify_email.dart';
+import 'package:t_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
