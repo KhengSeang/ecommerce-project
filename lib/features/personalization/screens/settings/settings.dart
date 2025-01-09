@@ -6,7 +6,10 @@ import 'package:t_store/common/widgets/custom_shapes/containers/primary_header_c
 import 'package:t_store/common/widgets/list_tiles/settings_menu_tiles.dart';
 import 'package:t_store/common/widgets/list_tiles/user_profile_tiles.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
+import 'package:t_store/features/personalization/screens/address/address.dart';
 import 'package:t_store/features/personalization/screens/profile/profile.dart';
+import 'package:t_store/features/shop/screens/cart/cart.dart';
+import 'package:t_store/features/shop/screens/order/order.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
@@ -31,7 +34,8 @@ class SettingScreen extends StatelessWidget {
                 ),
 
                 //User Profile Card
-                TUserProfileTile(onPressed: () => Get.to(() => const ProfileScreen())),
+                TUserProfileTile(
+                    onPressed: () => Get.to(() => const ProfileScreen())),
                 const SizedBox(height: TSizes.spaceBtwSections),
               ],
             ),
@@ -51,20 +55,19 @@ class SettingScreen extends StatelessWidget {
                   icon: Iconsax.safe_home,
                   title: 'My Addresses',
                   subTitle: 'Set Shopping Delivery Address',
-                  onTap: () {},
+                  onTap: () => Get.to(() => const UserAddressScreen()),
                 ),
                 TSettingMenuTile(
                   icon: Iconsax.shopping_cart,
                   title: 'My Cart',
                   subTitle: 'Add, Remove Products And Move To Checkout',
-                  onTap: () {},
+                  onTap: () => Get.to(() => const CartScreen()),
                 ),
                 TSettingMenuTile(
-                  icon: Iconsax.bag_tick,
-                  title: 'My Orders',
-                  subTitle: 'In-Progress And Completed Orders',
-                  onTap: () {},
-                ),
+                    icon: Iconsax.bag_tick,
+                    title: 'My Orders',
+                    subTitle: 'In-Progress And Completed Orders',
+                    onTap: () => Get.to(() => const OrderScreen())),
                 TSettingMenuTile(
                   icon: Iconsax.bank,
                   title: 'Bank Account',

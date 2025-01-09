@@ -5,7 +5,7 @@ import 'package:t_store/common/widgets/appbar/appbar.dart';
 import 'package:t_store/common/widgets/icons/t_circular_icon.dart';
 import 'package:t_store/common/widgets/layouts/grid_layout.dart';
 import 'package:t_store/common/widgets/products/product_cards/product_card_vertical.dart';
-import 'package:t_store/features/shop/screens/home.dart';
+import 'package:t_store/navigation_menu.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class FavouriteScreen extends StatelessWidget {
@@ -19,7 +19,8 @@ class FavouriteScreen extends StatelessWidget {
             Text('Wishlist', style: Theme.of(context).textTheme.headlineMedium),
         actions: [
           TCircularIcon(
-              icon: Iconsax.add, onPressed: () => Get.to(const HomeScreen()))
+              icon: Iconsax.add,
+              onPressed: () => Get.offAll(() => const NavigationMenu()))
         ],
       ),
       body: SingleChildScrollView(
@@ -27,7 +28,9 @@ class FavouriteScreen extends StatelessWidget {
           padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
-              TGridLayout(itemCount: 6, itemBuilder: (_, index) => const TProductCardVertical())
+              TGridLayout(
+                  itemCount: 6,
+                  itemBuilder: (_, index) => const TProductCardVertical())
             ],
           ),
         ),

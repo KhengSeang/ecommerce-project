@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
@@ -7,6 +8,7 @@ import 'package:t_store/features/shop/screens/product_details/widget/product_att
 import 'package:t_store/features/shop/screens/product_details/widget/product_detail_image_slider.dart';
 import 'package:t_store/features/shop/screens/product_details/widget/product_meta_data.dart';
 import 'package:t_store/features/shop/screens/product_details/widget/rating_share_widget.dart';
+import 'package:t_store/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class ProductDetail extends StatelessWidget {
@@ -59,7 +61,7 @@ class ProductDetail extends StatelessWidget {
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',
-                    trimExpandedText: ' Less',
+                    trimExpandedText: ' Show less',
                     moreStyle:
                         TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                     lessStyle:
@@ -78,7 +80,8 @@ class ProductDetail extends StatelessWidget {
                         showActionButton: false,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () =>
+                            Get.to(() => const ProductReviewsScreen()),
                         icon: const Icon(Iconsax.arrow_right_3, size: 18),
                       )
                     ],
