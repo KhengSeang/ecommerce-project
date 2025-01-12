@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:t_store/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:t_store/common/widgets/layouts/grid_layout.dart';
 import 'package:t_store/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
+import 'package:t_store/features/shop/screens/all_products/all_product.dart';
 import 'package:t_store/features/shop/screens/widgets/home_appbar.dart';
 import 'package:t_store/features/shop/screens/widgets/home_categories.dart';
 import 'package:t_store/features/shop/screens/widgets/promo_slider.dart';
@@ -20,36 +22,38 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           //Header
-          TPrimaryHeaderContainer(
+          const TPrimaryHeaderContainer(
               child: Column(
             children: [
               ///Appbar
-              const THomeAppBar(),
-              const SizedBox(height: TSizes.spaceBtwSections),
+              THomeAppBar(),
+              SizedBox(height: TSizes.spaceBtwSections),
 
               ///Search bar
-              const TSearchContainerr(
+              TSearchContainer(
                 text: 'Search in Store',
               ),
-              const SizedBox(height: TSizes.spaceBtwSections),
+              SizedBox(height: TSizes.spaceBtwSections),
 
               ///Catergories
               Padding(
-                padding: const EdgeInsets.only(left: TSizes.defaultSpace),
+                padding: EdgeInsets.only(left: TSizes.defaultSpace),
                 child: Column(
                   children: [
                     //Heading
                     TSectionHeading(
                       title: 'Popular Catergories',
-                      onPressed: (){},
+                      showActionButton: false,
+                      textColor: Colors.white,
                     ),
-                    const SizedBox(height: TSizes.spaceBtwItems),
+                    SizedBox(height: TSizes.spaceBtwItems),
 
                     //Category
-                    const THomeCategories()
+                    THomeCategories()
                   ],
                 ),
-              )
+              ),
+              SizedBox(height: TSizes.spaceBtwSections),
             ],
           )),
 
@@ -67,6 +71,12 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections),
+
+                  TSectionHeading(
+                    title: 'Popular Products',
+                    onPressed: () => Get.to(() => const AllProduct()),
+                  ),
+                  const SizedBox(height: TSizes.spaceBtwItems),
 
                   //Popular Product
                   TGridLayout(
