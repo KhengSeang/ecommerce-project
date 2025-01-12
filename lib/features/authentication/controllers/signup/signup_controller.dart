@@ -11,7 +11,7 @@ import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/helpers/network_manager.dart';
 import '../../../personalization/models/user_model.dart';
 
-class SignupController extends GetxController{
+class SignupController extends GetxController {
   static SignupController get instance => Get.find();
 
   /// Variables
@@ -26,12 +26,13 @@ class SignupController extends GetxController{
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
   ///  -- Signup
-  void signup() async{
-    try{
+  void signup() async {
+    try {
       // Start Loading
-      TFullScreenLoader.openLoadingDialog('We are processging your information...', TImages.docerAnimation);
+      TFullScreenLoader.openLoadingDialog(
+          'We are processging your information...', TImages.docerAnimation);
 
-      // Check INternet Connectivity
+      // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
         // Remove Loader
@@ -50,13 +51,16 @@ class SignupController extends GetxController{
       if (!privacyPolicy.value) {
         TLoaders.warningSnackBar(
           title: 'Accept Privacy Policy',
-          message: 'In order to create account, you must have to read and accept the Privay & Terms of Use.',
+          message:
+              'In order to create account, you must have to read and accept the Privay & Terms of Use.',
         );
         return;
       }
 
       // Register user in the firebase authentication and Save user data in firebase
-      final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(email.text.trim(), password.text.trim());
+      final userCredential = await AuthenticationRepository.instance
+          .registerWithEmailAndPassword(
+              email.text.trim(), password.text.trim());
 
       // Save authentication user data in the firebase firestore
       final newUser = UserModel(
@@ -75,24 +79,19 @@ class SignupController extends GetxController{
       // Remove loader
       TFullScreenLoader.stopLoading();
 
-
       // Save success message
       TLoaders.successSnackBar(
-        title: 'Registration Successful!',
-        message: 'Your account has been created! Verify email to continue.'
-      );
+          title: 'Registration Successful!',
+          message: 'Your account has been created! Verify email to continue.');
 
       // Move to Verify Email Screen
       Get.to(() => const VerifyEmailScreen());
-
-    } catch(e){
+    } catch (e) {
       // Remove Loader
       TFullScreenLoader.stopLoading();
 
-       // Show some Generic error message to user
+      // Show some Generic error message to user
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
-
   }
-
 }
