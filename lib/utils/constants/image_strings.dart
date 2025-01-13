@@ -166,7 +166,7 @@ class TImages {
 
   // -- Animation JSON File
   static const String docerAnimation = "assets/images/animations/141594-animation-of-docer.json";
-  static const String successfullyRegisterAnimation = "assets/images/animations/72462-check-register.json";
+  static const String successfullyRegisterAnimation = "assets/images/animations/120978-payment-successful.json";
   static const String cartAnimation = "assets/images/animations/lady-adding-product-in-cart-animation.json";
   static const String orderCompletedAnimation = "assets/images/animations/order-complete-car-delivery-animation.json";
   static const String packageAnimation = "assets/images/animations/98783-packaging-in-progress.json";
