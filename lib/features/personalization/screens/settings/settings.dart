@@ -13,6 +13,8 @@ import 'package:t_store/features/shop/screens/order/order.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
+import '../../../authentication/screens/login/login.dart';
+
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
 
@@ -133,7 +135,7 @@ class SettingScreen extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () => Get.offAll(() => const LoginScreen()),
                     child: const Text('Logout'),
                   ),
                 ),
