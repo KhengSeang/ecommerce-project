@@ -1,4 +1,4 @@
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../utils/formatters/formatter.dart';
 
@@ -12,7 +12,6 @@ class UserModel {
   final String username;
   String phoneNumber;
   String profilePicture;
-
 
   /// Constructor for UserModel.
   UserModel({
@@ -35,10 +34,10 @@ class UserModel {
   static List<String> nameParts(fullName) => fullName.split(" ");
 
   /// Static funon to generate a username from the full name.
-  static String generateUsername(fullName){
+  static String generateUsername(fullName) {
     List<String> nameParts = fullName.split(" ");
     String firstName = nameParts[0].toLowerCase();
-    String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() :"";
+    String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : "";
 
     String camelCaseUsername = "$firstName$lastName";
     String uernameWithPrefix = "cwt_$camelCaseUsername";
@@ -46,7 +45,14 @@ class UserModel {
   }
 
   /// Static function to create an empty user model.
-  static UserModel empty() => UserModel(id: '', firstName: '', lastName: '', username:'', email: '', phoneNumber: '', profilePicture: '');
+  static UserModel empty() => UserModel(
+      id: '',
+      firstName: '',
+      lastName: '',
+      username: '',
+      email: '',
+      phoneNumber: '',
+      profilePicture: '');
 
   /// Converts model to JSON structure for storing dat in firebase.
   Map<String, dynamic> toJson() {
@@ -61,6 +67,23 @@ class UserModel {
     };
   }
 
+  factory UserModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() != null) {
+      final data = document.data()!;
+      return UserModel(
+        id: document.id,
+        firstName: data['firstName'] ?? '',
+        lastName: data['lastName'] ?? '',
+        email: data['email'] ?? '',
+        username: data['username'] ?? '',
+        phoneNumber: data['phoneNumber'] ?? '',
+        profilePicture: data['profilePicture'] ?? '',
+      );
+    } else {
+      return UserModel.empty(); // Return an empty UserModel for the null case
+    }
+  }
 
   /// Factory method to create a UserModel from a firebase document snapshot.
   // factory UserModel.fromSnapshot(DocumentSnapshot<Map><String, dynamic>> document) {

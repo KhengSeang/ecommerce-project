@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:t_store/common/widgets/appbar/appbar.dart';
 import 'package:t_store/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:t_store/features/personalization/controllers/user_controller.dart';
+import 'package:t_store/features/shop/screens/widgets/shimmer.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
 
@@ -11,7 +16,8 @@ class THomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TAppBar(
+    final controller = Get.put(UserController());
+    return TAppbar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -25,6 +31,17 @@ class THomeAppBar extends StatelessWidget {
                   .textTheme
                   .headlineMedium!
                   .apply(color: TColors.white)),
+          Obx(() {
+            if (controller.profileLoading.value) {
+              return const TShimmerEffect(width: 80, height: 15);
+            } else {
+              return Text(controller.user.value.fullName,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .apply(color: TColors.white));
+            }
+          })
         ],
       ),
       actions: [
