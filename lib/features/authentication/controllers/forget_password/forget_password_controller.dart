@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
@@ -25,7 +23,7 @@ class ForgetPasswordController extends GetxController {
 
       // Check internet connection
       final isConnected = await NetworkManager.instance.isConnected();
-      if(!isConnected) { TFullScreenLoader.stopLoading(); return; }
+      if (!isConnected) { TFullScreenLoader.stopLoading(); return; }
 
       // Form validation
       if (!forgetPasswordFormKey.currentState!.validate()){
@@ -34,7 +32,7 @@ class ForgetPasswordController extends GetxController {
       }
 
       // Send email to reset password
-      await AuthenticationRepository.instance.sendPasswordReset(email.text.trim());
+      await AuthenticationRepository.instance.sendPasswordResetEmail(email.text.trim());
 
       // Remove loader
       TFullScreenLoader.stopLoading();
@@ -64,7 +62,7 @@ class ForgetPasswordController extends GetxController {
       if(!isConnected) { TFullScreenLoader.stopLoading(); return;}
 
       // Send email to reset password
-      await AuthenticationRepository.instance.sendPasswordReset(email);
+      await AuthenticationRepository.instance.sendPasswordResetEmail(email);
 
       // Remove loader
       TFullScreenLoader.stopLoading();

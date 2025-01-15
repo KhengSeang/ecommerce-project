@@ -14,7 +14,7 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+
     final controller = Get.put(ForgetPasswordController());
 
     return Scaffold(
@@ -53,7 +53,7 @@ class ForgetPassword extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => () => controller.sendPasswordResetEmail(),
+                    onPressed: () => controller.sendPasswordResetEmail(),
                     child: const Text(TTexts.submit)))
           ],
         ),

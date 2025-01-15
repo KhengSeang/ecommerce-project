@@ -1,32 +1,32 @@
-{
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "DEVELOPMENT (Debug)",
-            "request": "launch",
-            "type": "dart",
-            "program": "lib/main.dart",
-            "flutterMode": "debug"
-        },
-        {
-            "name": "DEVELOPMENT (Profile)",
-            "request": "launch",
-            "type": "dart",
-            "program": "lib/main.dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "DEVELOPMENT (Release)",
-            "request": "launch",
-            "type": "dart",
-            "program": "lib/main.dart",
-            "flutterMode": "release"
-        },
-        {
-            "name": "Web Chrome",
-            "request": "launch",
-            "type": "dart",
-            "args": ["-d", "chrome", "--web-port", "3000"]
-        }
-    ]
-}
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "DEVELOPMENT (Debug)",
+//             "request": "launch",
+//             "type": "dart",
+//             "program": "lib/main.dart",
+//             "flutterMode": "debug"
+//         },
+//         {
+//             "name": "DEVELOPMENT (Profile)",
+//             "request": "launch",
+//             "type": "dart",
+//             "program": "lib/main.dart",
+//             "flutterMode": "profile"
+//         },
+//         {
+//             "name": "DEVELOPMENT (Release)",
+//             "request": "launch",
+//             "type": "dart",
+//             "program": "lib/main.dart",
+//             "flutterMode": "release"
+//         },
+//         {
+//             "name": "Web Chrome",
+//             "request": "launch",
+//             "type": "dart",
+//             "args": ["-d", "chrome", "--web-port", "3000"]
+//         }
+//     ]
+// }
