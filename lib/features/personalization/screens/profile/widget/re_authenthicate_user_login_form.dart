@@ -7,7 +7,7 @@ import 'package:t_store/utils/constants/text_strings.dart';
 import 'package:t_store/utils/validators/validation.dart';
 
 class ReAuthLoginForm extends StatelessWidget {
-  const ReAuthLoginForm({Key? key}) : super(key: key);
+  const ReAuthLoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +41,9 @@ class ReAuthLoginForm extends StatelessWidget {
                     controller: controller.verifyPassword,
                     validator: (value) =>
                         TValidator.validatEmptyText('Password', value),
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: TTexts.password,
-                      prefixIcon: const Icon(Iconsax.eye_slash),
+                      prefixIcon: Icon(Iconsax.eye_slash),
                     ),
                   ),
                 ),

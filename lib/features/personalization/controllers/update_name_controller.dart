@@ -1,5 +1,3 @@
-import 'dart:nativewrappers/_internal/vm/lib/ffi_native_type_patch.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/data/repositories/user/user_repository.dart';
@@ -30,7 +28,7 @@ class UpdateNameController extends GetxController {
     lastName.text = userController.user.value.lastName;
   }
 
-  Future<void> UpdateUserName() async {
+  Future<void> updateUserName() async {
     try {
       TFullScreenLoader.openLoadingDialog(
           'We are updating your info', TImages.docerAnimation);

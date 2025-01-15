@@ -124,8 +124,8 @@ class UserController extends GetxController {
     try {
       TFullScreenLoader.openLoadingDialog('Processing', TImages.carAnimation);
 
-      final isConected = await NetworkManager.instance.isConnected();
-      if (!isConected) {
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
         TFullScreenLoader.stopLoading();
         return;
       }
@@ -133,7 +133,17 @@ class UserController extends GetxController {
       await AuthenticationRepository.instance
           .reAuthenticationEmailAndPasswordUser(
               verifyEmail.text.trim(), verifyPassword.text.trim());
-      await AuthenticationRepository.instance.deleteAccount();
+
+      final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+      final provider =
+          FirebaseAuth.instance.currentUser?.providerData.first.providerId ??
+              '';
+
+      if (userId.isEmpty || provider.isEmpty) {
+        throw Exception('User ID or provider is missing.');
+      }
+
+      await AuthenticationRepository.instance.deleteAccount(userId, provider);
       TFullScreenLoader.stopLoading();
       Get.offAll(() => const LoginScreen());
     } catch (e) {

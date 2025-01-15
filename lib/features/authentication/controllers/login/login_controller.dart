@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -10,9 +9,7 @@ import 'package:t_store/utils/popups/loaders.dart';
 
 import '../../../../utils/constants/image_strings.dart';
 
-
-class LoginController extends GetxController{
-
+class LoginController extends GetxController {
   /// Variables
   final rememberMe = false.obs;
   final hidePassword = true.obs;
@@ -33,7 +30,8 @@ class LoginController extends GetxController{
   Future<void> emailAndPasswordSignIn() async {
     try {
       // start loading
-      TFullScreenLoader.openLoadingDialog('Loggin you in...', TImages.docerAnimation);
+      TFullScreenLoader.openLoadingDialog(
+          'Loggin you in...', TImages.docerAnimation);
 
       // check internet connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -50,33 +48,31 @@ class LoginController extends GetxController{
 
       // Save data if remember me is selected
       if (rememberMe.value) {
-        localStorage.write('REMEMBER_ME_EMAIL', email.text.trim()) ;
+        localStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
         localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
       }
 
-
       // Login user using Email & password authentication
-      final UserCredential = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+      final UserCredential = await AuthenticationRepository.instance
+          .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       // remove loader
       TFullScreenLoader.stopLoading();
 
       // redirect
       AuthenticationRepository.instance.screenRedirect();
-
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
     }
   }
 
-
   /// -- Google Signin authentication
-  Future<void> googleSignIn() async{
-    try{
-
+  Future<void> googleSignIn() async {
+    try {
       // Start loading
-      TFullScreenLoader.openLoadingDialog('Loggin you in...', TImages.docerAnimation);
+      TFullScreenLoader.openLoadingDialog(
+          'Loggin you in...', TImages.docerAnimation);
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -86,24 +82,21 @@ class LoginController extends GetxController{
       }
 
       // Google Authentication
-      final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
+      final userCredentials =
+          await AuthenticationRepository.instance.signInWithGoogle();
 
       // Save user record
       await userController.saveUsrRecord(userCredentials);
-
 
       // Remove loader
       TFullScreenLoader.stopLoading();
 
       // Redirect
       AuthenticationRepository.instance.screenRedirect();
-
-    } catch(e){
+    } catch (e) {
       // Remove loader
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
-
     }
   }
-
 }

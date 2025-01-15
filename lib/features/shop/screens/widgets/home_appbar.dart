@@ -17,7 +17,7 @@ class THomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(UserController());
-    return TAppbar(
+    return TAppBar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,11 +26,6 @@ class THomeAppBar extends StatelessWidget {
                   .textTheme
                   .labelMedium!
                   .apply(color: TColors.grey)),
-          Text(TTexts.homeAppbarSubTitle,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium!
-                  .apply(color: TColors.white)),
           Obx(() {
             if (controller.profileLoading.value) {
               return const TShimmerEffect(width: 80, height: 15);
@@ -38,7 +33,7 @@ class THomeAppBar extends StatelessWidget {
               return Text(controller.user.value.fullName,
                   style: Theme.of(context)
                       .textTheme
-                      .headlineSmall!
+                      .headlineMedium!
                       .apply(color: TColors.white));
             }
           })
